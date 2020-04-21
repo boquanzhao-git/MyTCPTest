@@ -180,28 +180,19 @@ namespace SignalCommunication.TCP
         /// </summary>
         public void Start()
         {
-            _socket.BeginConnect(_endPointendPoint, ConnectedCallback, _socket);
-            _isConnected = true;
-             socketClientThread = new Thread(SocketClientReceive);
-            socketClientThread.IsBackground = true;
-            socketClientThread.Priority = ThreadPriority.Highest;
-            socketClientThread.Start();
-
-            this.ServerClose = ConfigurationManager.AppSettings["ServerClose"];
-            this.ClientHeartbeatPpacketMsg = ConfigurationManager.AppSettings["ClientHeartbeatPpacketMsg"];
-            this.ClientHeartbeatPpacketVerificationMsg = ConfigurationManager.AppSettings["ClientHeartbeatPpacketVerificationMsg"];
-
-            this.IntOutTimeFor = (int)(CommuuicationOutTim * 1000 / IntSleep);
-
-            if (IsBoolVerifyHeartbeatPacket)
+            _isConnected = false;
+            try
             {
-                //设置内部订时器
-                ExecTime.Enabled = true;
-                ExecTime.Interval = BoolVerifyHeartbeatPacketTime;
-                ExecTime.AutoReset = true;
-                ExecTime.Elapsed += new System.Timers.ElapsedEventHandler(ExecTime_Tick);
-                ExecTime.Start();
+                _socket.BeginConnect(_endPointendPoint, ConnectedCallback, _socket);
             }
+            catch (Exception)
+            {
+                _isConnected = false;
+                throw;
+                //return;
+            }
+           // _isConnected = true;
+             
 
         }
       
@@ -336,6 +327,26 @@ namespace SignalCommunication.TCP
                 {
                     OnConnected();
                     this._isConnected = true;
+                    socketClientThread = new Thread(SocketClientReceive);
+                    socketClientThread.IsBackground = true;
+                    socketClientThread.Priority = ThreadPriority.Highest;
+                    socketClientThread.Start();
+
+                    this.ServerClose = ConfigurationManager.AppSettings["ServerClose"];
+                    this.ClientHeartbeatPpacketMsg = ConfigurationManager.AppSettings["ClientHeartbeatPpacketMsg"];
+                    this.ClientHeartbeatPpacketVerificationMsg = ConfigurationManager.AppSettings["ClientHeartbeatPpacketVerificationMsg"];
+
+                    this.IntOutTimeFor = (int)(CommuuicationOutTim * 1000 / IntSleep);
+
+                    if (IsBoolVerifyHeartbeatPacket)
+                    {
+                        //设置内部订时器
+                        ExecTime.Enabled = true;
+                        ExecTime.Interval = BoolVerifyHeartbeatPacketTime;
+                        ExecTime.AutoReset = true;
+                        ExecTime.Elapsed += new System.Timers.ElapsedEventHandler(ExecTime_Tick);
+                        ExecTime.Start();
+                    }
                 }
             }
             else

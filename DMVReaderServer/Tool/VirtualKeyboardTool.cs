@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace DMVReaderServer
 {
-    public class VirtualKeyboardTool
+    public static class VirtualKeyboardTool
     {
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
@@ -39,7 +39,7 @@ namespace DMVReaderServer
             int right;
             int bottom;
         }
-        public GUITHREADINFO? GetGuiThreadInfo(IntPtr hwnd)
+        public static GUITHREADINFO? GetGuiThreadInfo(IntPtr hwnd)
         {
             if (hwnd != IntPtr.Zero)
             {
@@ -53,7 +53,7 @@ namespace DMVReaderServer
             return null;
         }
 
-        public void SendText(string text)
+        public static void SendText(string text)
         {
             IntPtr hwnd = GetForegroundWindow();
             if (String.IsNullOrEmpty(text))
@@ -65,6 +65,10 @@ namespace DMVReaderServer
                 {
                     SendMessage(guiInfo.Value.hwndFocus, 0x0102, (IntPtr)(int)text[i], IntPtr.Zero);
                 }
+                SendMessage(guiInfo.Value.hwndFocus, 0x0102, (IntPtr)13, IntPtr.Zero);
+               // PostMessage(WM_COMMAND, IDOK, 0);
+               // PostMessage(WM_COMMAND, IDCANCEL, 0);
+
             }
         }
     }

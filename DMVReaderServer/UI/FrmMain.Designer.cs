@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbServerIP = new System.Windows.Forms.ComboBox();
             this.btClsoeServer = new System.Windows.Forms.Button();
             this.btServerSend = new System.Windows.Forms.Button();
             this.rtxtServerMsgList = new System.Windows.Forms.RichTextBox();
@@ -38,7 +39,6 @@
             this.btStartServer = new System.Windows.Forms.Button();
             this.txtServerProt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtServerIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btCloseClient = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbbServerIP);
             this.groupBox1.Controls.Add(this.btClsoeServer);
             this.groupBox1.Controls.Add(this.btServerSend);
             this.groupBox1.Controls.Add(this.rtxtServerMsgList);
@@ -67,7 +68,6 @@
             this.groupBox1.Controls.Add(this.btStartServer);
             this.groupBox1.Controls.Add(this.txtServerProt);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtServerIP);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -76,6 +76,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "服务器配置";
+            // 
+            // cbbServerIP
+            // 
+            this.cbbServerIP.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
+            this.cbbServerIP.FormattingEnabled = true;
+            this.cbbServerIP.Location = new System.Drawing.Point(89, 24);
+            this.cbbServerIP.Name = "cbbServerIP";
+            this.cbbServerIP.Size = new System.Drawing.Size(121, 20);
+            this.cbbServerIP.TabIndex = 16;
             // 
             // btClsoeServer
             // 
@@ -102,7 +111,7 @@
             // 
             this.rtxtServerMsgList.Location = new System.Drawing.Point(6, 90);
             this.rtxtServerMsgList.Name = "rtxtServerMsgList";
-            this.rtxtServerMsgList.Size = new System.Drawing.Size(347, 205);
+            this.rtxtServerMsgList.Size = new System.Drawing.Size(314, 205);
             this.rtxtServerMsgList.TabIndex = 6;
             this.rtxtServerMsgList.Text = "";
             // 
@@ -157,13 +166,6 @@
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "服务器端口：";
-            // 
-            // txtServerIP
-            // 
-            this.txtServerIP.Location = new System.Drawing.Point(89, 24);
-            this.txtServerIP.Name = "txtServerIP";
-            this.txtServerIP.Size = new System.Drawing.Size(139, 21);
-            this.txtServerIP.TabIndex = 1;
             // 
             // label1
             // 
@@ -325,7 +327,6 @@
         private System.Windows.Forms.Button btStartServer;
         private System.Windows.Forms.TextBox txtServerProt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtServerIP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btCloseClient;
@@ -339,6 +340,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtClientIP;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbbServerIP;
     }
 }
 

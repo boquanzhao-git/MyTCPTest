@@ -5,3 +5,5 @@ F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.csproj.Genera
 F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.exe
 F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.pdb
 F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.Form1.resources
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.csprojResolveAssemblyReference.cache
+F:\Mflex\DMVReaderServer\DMVReaderServer\bin\Debug\DMVReaderServer.exe.config

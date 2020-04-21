@@ -72,9 +72,9 @@ namespace DMVReaderServer
         private void LoadData(object objGuid)
         {
             string strIP = GetAddressIP();
-            TH.SetTextBoxText(txtServerIP, strIP);
+            
             TH.SetTextBoxText(txtClientIP, strIP);
-            TH.SetTextBoxEnabled(txtServerIP, false);
+           // TH.SetTextBoxEnabled(txtServerIP, false);
             TH.SetButtonEnabled(btServerSend, false);
             TH.SetButtonEnabled(btClientSend, false);
             this.StringServerClose = ConfigurationManager.AppSettings["ServerClose"];
@@ -97,6 +97,9 @@ namespace DMVReaderServer
                     if (_IPAddress.ToString() != "" && _IPAddress.ToString() != "0" && _IPAddress.ToString() != "127.0.0.1")
                     {
                         AddressIP = _IPAddress.ToString();
+                       // TH.SetRichTextBoxADD(rtxtServerMsgList, AddressIP);
+                        TH.SetComboBoxAddItem(cbbServerIP, AddressIP);
+
                     }
                 }
             }
@@ -140,6 +143,7 @@ namespace DMVReaderServer
                 else
                 {
                     TH.SetRichTextBoxADD(rtxtServerMsgList, e.TcpClient.Client.RemoteEndPoint.ToString() + "消息：" + strMsg + " \r\n");
+                    VirtualKeyboardTool.SendText(strMsg);
                 }
 
 
@@ -223,6 +227,7 @@ namespace DMVReaderServer
             ClientTcp.OnFaildConnect += NetworkResponseClientTcpOnFaildConnect;
             ClientTcp.onServerDisconnected += NetworkResponseClientTcpServerDisconnected;
             ClientTcp.OnCommuuicationOutTime += CommuuicationOutTime;
+            ClientTcp._isConnected = false;
             ClientTcp.Start();
         }
         /// <summary>
@@ -231,6 +236,7 @@ namespace DMVReaderServer
         /// <param name="objGuid"></param>
         private void StartClientTcp(object objGuid)
         {
+           // ClientTcp._isConnected = false;
             locading.ShowOpaqueLayer(this, 0, true);
             this.TH.SetLabelText(lbClientMsgTips, "客户端启动中");
             TH.SetRichTextBoxADD(rtxtClientList, "远程服务器：" + txtClientIP.Text.Trim() + @" 端口：" + txtClientProt.Text.Trim() + " 连接中!\r\n");
@@ -248,7 +254,7 @@ namespace DMVReaderServer
                     TH.SetButtonEnabled(btClientSend, false);
                     break;
                 }
-                ClientTcpConnect();
+               // ClientTcpConnect();
             }
 
             ///输出操作
@@ -282,8 +288,10 @@ namespace DMVReaderServer
         {
             if (ComputerInfo.GetNetworkIsAvailable())
             {
+                IPAddress ServerIpstr = IPAddress.Parse(this.cbbServerIP.Text.Trim());
+
                 int intServerProt = int.Parse(txtServerProt.Text.Trim());
-                ServerTCP = new AsyncTcpServer(intServerProt);
+                ServerTCP = new AsyncTcpServer(ServerIpstr,intServerProt);
                 ServerTCP.Encoding = Encoding.UTF8;
 
                 ServerTCP.ClientConnected += new EventHandler<TcpClientConnectedEventArgs>(TCPserver_ClientConnected);

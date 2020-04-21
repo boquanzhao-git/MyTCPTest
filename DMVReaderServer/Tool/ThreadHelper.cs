@@ -648,6 +648,33 @@ namespace DMVReaderServer
         /// </summary>
         /// <param name="textbox">TextBox对象</param>
         /// <param name="strText">文本内容</param>
+     /*   public void SetComboBoxText(ComboBox textbox, string strText)
+        {
+
+            if (ThisForm != null)
+            {
+                if (ThisForm.IsDisposed == false)
+                {
+                    if (ThisForm.InvokeRequired)
+                    {
+                        ThisForm.Invoke(new Action(() =>
+                        {
+                            textbox.Items.Add(strText);
+                            textbox.i
+                        }));
+                    }
+                    else
+                    {
+                        textbox.Items.Add(strText);
+                    }
+                }
+            }
+        }*/
+        /// <summary>
+        /// 设置TextBox的文本内容
+        /// </summary>
+        /// <param name="textbox">TextBox对象</param>
+        /// <param name="strText">文本内容</param>
         public void SetTextBoxText(TextBox textbox, string strText)
         {
           
