@@ -1,0 +1,7 @@
+F:\Mflex\DMVReaderServer\DMVReaderServer\bin\Debug\DMVReaderServer.exe
+F:\Mflex\DMVReaderServer\DMVReaderServer\bin\Debug\DMVReaderServer.pdb
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.csprojResolveAssemblyReference.cache
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.Properties.Resources.resources
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.csproj.GenerateResource.Cache
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.exe
+F:\Mflex\DMVReaderServer\DMVReaderServer\obj\Debug\DMVReaderServer.pdb
